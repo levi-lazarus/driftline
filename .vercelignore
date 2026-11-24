@@ -1,0 +1,5 @@
+# Deploy as a pure static site: keep local-dev tooling out of Vercel
+# so it never detects a Node.js server or runs an install/build.
+scripts/
+package.json
+README.md

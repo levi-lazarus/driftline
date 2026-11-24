@@ -68,7 +68,7 @@ npm run start
 ```
 Then open the URL it prints, usually **http://localhost:3000**. If that port is busy, it automatically uses the next free one (3001, 3002, …). To pick a port: `PORT=4000 npm run start`. Stop it with **Ctrl+C**.
 
-`server.js` is a tiny static server built only from Node's standard library (Node 18+), so there are no dependencies to install.
+`scripts/dev-server.js` is a tiny static server built only from Node's standard library (Node 18+), so there are no dependencies to install.
 
 **Alternatives**
 - VS Code: install the *Live Server* extension → right-click `index.html` → **Open with Live Server**.
@@ -89,8 +89,10 @@ driftline/
 ├── about.html          Brand story
 ├── contact.html        Contact form + FAQ
 ├── README.md
-├── package.json        `npm run start` script
-├── server.js           Zero-dependency local dev server
+├── package.json        `npm run start` script (local dev only)
+├── vercel.json         Static deployment config
+├── scripts/
+│   └── dev-server.js   Zero-dependency local dev server
 ├── assets/
 │   ├── favicon.svg
 │   ├── logo.svg

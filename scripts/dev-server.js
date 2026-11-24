@@ -1,5 +1,6 @@
 /**
  * DRIFTLINE — tiny zero-dependency static dev server.
+ * Local development only — not used by Vercel (see .vercelignore).
  * Usage: npm run start   (or: PORT=4000 npm run start)
  *
  * ES modules don't run from file://, so the site needs to be served over http.
@@ -10,7 +11,8 @@ import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = resolve(fileURLToPath(new URL('.', import.meta.url)));
+// Serve the project root (one level up from /scripts).
+const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const START_PORT = Number(process.env.PORT) || 3000;
 
 const MIME = {
