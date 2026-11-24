@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your bag — DRIFTLINE</title>
+  <meta name="description" content="Review your DRIFTLINE bag and check out.">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="js/theme-init.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="cart">
+  <div class="page-transition" aria-hidden="true"><span class="page-transition__word">DRIFTLINE</span></div>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero page-hero--compact" aria-labelledby="cart-title">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page">Bag</span></li>
+          </ol>
+        </nav>
+        <h1 class="page-hero__title" id="cart-title">Your bag</h1>
+        <p class="page-hero__lead" data-cart-lead>Review your picks, then check out in under a minute.</p>
+      </div>
+    </section>
+
+    <div class="container cart-page" data-cart-page>
+      <!-- Empty state -->
+      <div class="cart-empty cart-empty--page" data-cart-page-empty hidden>
+        <div class="cart-empty__icon"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+        <h2 class="cart-empty__title">Your bag is empty.</h2>
+        <p class="cart-empty__text">Looks like you haven't picked anything yet. The latest drop is waiting.</p>
+        <div class="cart-empty__ctas">
+          <a class="btn btn--accent" href="shop.html">Start shopping</a>
+          <a class="btn btn--ghost" href="shop.html?view=wishlist">View wishlist</a>
+        </div>
+      </div>
+
+      <div class="cart-page__grid" data-cart-filled>
+        <div class="cart-page__main">
+          <section class="cart-items" aria-labelledby="items-title">
+            <h2 class="visually-hidden" id="items-title">Items in your bag</h2>
+            <div class="cart-items__head" aria-hidden="true">
+              <span>Product</span><span>Quantity</span><span>Total</span>
+            </div>
+            <ul class="cart-items__list" role="list" data-cart-list></ul>
+          </section>
+
+          <!-- Checkout -->
+          <section class="checkout" id="checkout" aria-labelledby="checkout-title">
+            <h2 class="checkout__title" id="checkout-title">Checkout</h2>
+            <p class="checkout__note">Demo store — no real payment is taken. Use card <strong>4242 4242 4242 4242</strong>, any future expiry and any CVC.</p>
+
+            <form class="checkout__form" data-checkout-form novalidate>
+              <fieldset class="checkout__step">
+                <legend class="checkout__legend"><span class="checkout__num">1</span> Contact</legend>
+                <div class="form-grid form-grid--2">
+                  <div class="field span-2">
+                    <label class="field__label" for="co-name">Full name</label>
+                    <input class="input" id="co-name" name="name" type="text" autocomplete="name" required minlength="2" data-label="Full name">
+                    <p class="field__error" id="co-name-error"></p>
+                  </div>
+                  <div class="field">
+                    <label class="field__label" for="co-email">Email</label>
+                    <input class="input" id="co-email" name="email" type="email" autocomplete="email" required data-label="Email" placeholder="you@example.com">
+                    <p class="field__error" id="co-email-error"></p>
+                  </div>
+                  <div class="field">
+                    <label class="field__label" for="co-phone">Phone</label>
+                    <input class="input" id="co-phone" name="phone" type="tel" autocomplete="tel" required data-validate="phone" data-label="Phone" placeholder="+234 801 234 5678">
+                    <p class="field__error" id="co-phone-error"></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="checkout__step">
+                <legend class="checkout__legend"><span class="checkout__num">2</span> Delivery</legend>
+                <div class="form-grid form-grid--2">
+                  <div class="field span-2">
+                    <label class="field__label" for="co-address">Street address</label>
+                    <input class="input" id="co-address" name="address" type="text" autocomplete="street-address" required minlength="5" data-label="Street address">
+                    <p class="field__error" id="co-address-error"></p>
+                  </div>
+                  <div class="field">
+                    <label class="field__label" for="co-city">City</label>
+                    <input class="input" id="co-city" name="city" type="text" autocomplete="address-level2" required data-label="City">
+                    <p class="field__error" id="co-city-error"></p>
+                  </div>
+                  <div class="field">
+                    <label class="field__label" for="co-state">State / Region</label>
+                    <select class="select" id="co-state" name="state" required data-label="State">
+                      <option value="">Select…</option>
+                      <option>Lagos</option>
+                      <option>Abuja (FCT)</option>
+                      <option>Rivers</option>
+                      <option>Oyo</option>
+                      <option>Kano</option>
+                      <option>Enugu</option>
+                      <option>Greater Accra (GH)</option>
+                      <option>Greater London (UK)</option>
+                      <option>Other</option>
+                    </select>
+                    <p class="field__error" id="co-state-error"></p>
+                  </div>
+                  <div class="field span-2">
+                    <label class="field__label" for="co-notes">Delivery notes <span class="optional">(optional)</span></label>
+                    <input class="input" id="co-notes" name="notes" type="text" placeholder="Gate code, landmark, best time to deliver…">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="checkout__step">
+                <legend class="checkout__legend"><span class="checkout__num">3</span> Payment</legend>
+                <div class="form-grid form-grid--2">
+                  <div class="field span-2">
+                    <label class="field__label" for="co-card">Card number</label>
+                    <input class="input input--mono" id="co-card" name="card" type="text" inputmode="numeric" autocomplete="cc-number" required data-validate="card" data-label="Card number" placeholder="1234 5678 9012 3456" maxlength="23">
+                    <p class="field__error" id="co-card-error"></p>
+                  </div>
+                  <div class="field">
+                    <label class="field__label" for="co-exp">Expiry (MM/YY)</label>
+                    <input class="input input--mono" id="co-exp" name="exp" type="text" inputmode="numeric" autocomplete="cc-exp" required data-validate="expiry" data-label="Expiry" placeholder="MM/YY" maxlength="5">
+                    <p class="field__error" id="co-exp-error"></p>
+                  </div>
+                  <div class="field">
+                    <label class="field__label" for="co-cvc">CVC</label>
+                    <input class="input input--mono" id="co-cvc" name="cvc" type="text" inputmode="numeric" autocomplete="cc-csc" required data-validate="cvc" data-label="CVC" placeholder="123" maxlength="4">
+                    <p class="field__error" id="co-cvc-error"></p>
+                  </div>
+                  <div class="field span-2">
+                    <label class="checkbox" for="co-terms">
+                      <input id="co-terms" name="terms" type="checkbox" required data-label="Terms">
+                      <span>I agree to the terms of sale and understand this is a demo order.</span>
+                    </label>
+                    <p class="field__error" id="co-terms-error"></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <button class="btn btn--accent btn--lg btn--block checkout__submit" type="submit" data-place-order>
+                Place order — <span data-order-total>₦0</span>
+              </button>
+            </form>
+          </section>
+        </div>
+
+        <!-- Order summary -->
+        <aside class="summary" aria-labelledby="summary-title">
+          <div class="summary__card">
+            <h2 class="summary__title" id="summary-title">Order summary</h2>
+            <dl class="summary__rows">
+              <div class="summary__row"><dt>Subtotal <span class="summary__muted" data-summary-count></span></dt><dd data-summary-subtotal>₦0</dd></div>
+              <div class="summary__row summary__row--discount" data-summary-discount-row hidden><dt>Discount <span class="summary__code" data-summary-code></span></dt><dd data-summary-discount>−₦0</dd></div>
+              <div class="summary__row"><dt>Shipping</dt><dd data-summary-shipping>₦0</dd></div>
+              <div class="summary__row summary__row--total"><dt>Total</dt><dd data-summary-total>₦0</dd></div>
+            </dl>
+
+            <div class="ship-meter ship-meter--inline" data-page-ship>
+              <p class="ship-meter__text" data-page-ship-text></p>
+              <div class="ship-meter__track"><span class="ship-meter__bar" data-page-ship-bar></span></div>
+            </div>
+
+            <form class="promo" data-promo-form novalidate>
+              <div class="field">
+                <label class="field__label" for="promo-code">Promo code</label>
+                <div class="promo__row">
+                  <input class="input promo__input" id="promo-code" name="promo" type="text" autocomplete="off" placeholder="Try DRIFT10" data-label="Promo code">
+                  <button class="btn btn--ghost promo__btn" type="submit">Apply</button>
+                </div>
+                <p class="field__error" id="promo-code-error"></p>
+                <p class="promo__success" data-promo-success role="status"></p>
+              </div>
+            </form>
+
+            <a class="btn btn--dark btn--block summary__cta" href="#checkout">Continue to checkout</a>
+            <p class="summary__secure">🔒 Secure, encrypted checkout · Free 30-day returns</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Order success modal -->
+    <div class="modal" data-success-modal role="dialog" aria-modal="true" aria-labelledby="success-title" aria-describedby="success-text" aria-hidden="true">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <button class="icon-btn modal__close" type="button" data-modal-close aria-label="Close">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+        <div class="success-badge" aria-hidden="true">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path class="success-badge__check" d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h2 class="success__title" id="success-title">Order confirmed!</h2>
+        <p class="success__text" id="success-text">Thanks, <span data-success-name>friend</span>. Order <strong data-order-id>#DL-000000</strong> is being packed. A receipt is on its way to <span data-success-email></span>.</p>
+        <dl class="success__meta">
+          <div><dt>Items</dt><dd data-success-items>0</dd></div>
+          <div><dt>Paid</dt><dd data-success-total>₦0</dd></div>
+          <div><dt>Arrives</dt><dd data-success-eta>2–4 days</dd></div>
+        </dl>
+        <div class="success__ctas">
+          <a class="btn btn--accent" href="shop.html">Keep shopping</a>
+          <a class="btn btn--ghost" href="index.html">Back home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

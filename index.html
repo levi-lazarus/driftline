@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRIFTLINE — Move different.</title>
+  <meta name="description" content="DRIFTLINE is a Lagos-born streetwear label: sneakers, hoodies, tees, jackets and accessories for people who move different.">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta property="og:title" content="DRIFTLINE — Move different.">
+  <meta property="og:description" content="Sneakers, streetwear and accessories. Built in Lagos, worn everywhere.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="js/theme-init.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="home">
+
+  <!-- 1. PRELOADER — letters clip in, counter runs, curtain lifts -->
+  <div class="preloader" data-preloader aria-hidden="true">
+    <div class="preloader__inner">
+      <p class="preloader__logo">
+        <span class="preloader__letter" style="--i:0">D</span><span class="preloader__letter" style="--i:1">R</span><span class="preloader__letter" style="--i:2">I</span><span class="preloader__letter" style="--i:3">F</span><span class="preloader__letter" style="--i:4">T</span><span class="preloader__letter preloader__letter--accent" style="--i:5">L</span><span class="preloader__letter preloader__letter--accent" style="--i:6">I</span><span class="preloader__letter preloader__letter--accent" style="--i:7">N</span><span class="preloader__letter preloader__letter--accent" style="--i:8">E</span>
+      </p>
+      <p class="preloader__tagline">Move different.</p>
+    </div>
+    <div class="preloader__meta">
+      <span>Lagos → World</span>
+      <span class="preloader__count" data-preloader-count>000</span>
+    </div>
+    <div class="preloader__bar"><span data-preloader-bar></span></div>
+  </div>
+
+  <div class="page-transition" aria-hidden="true"><span class="page-transition__word">DRIFTLINE</span></div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- 2. HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow">DRIFT/07 · Winter '26 collection</p>
+          <h1 class="hero__title" id="hero-title" data-hero-title>
+            <span class="hero__line">Move</span>
+            <span class="hero__line hero__line--outline">different.</span>
+          </h1>
+          <p class="hero__lead">Sneakers, streetwear and everyday gear for people who refuse the straight line. Designed in Lagos. Worn everywhere.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--accent btn--lg" href="shop.html" data-magnetic>Shop the drop <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--ghost btn--lg" href="#lookbook">View lookbook</a>
+          </div>
+        </div>
+
+        <div class="hero__visual" data-hero-visual>
+          <div class="hero__glow" aria-hidden="true"></div>
+          <div class="hero__tilt" data-hero-tilt>
+            <a class="hero__card" href="product.html?id=dl-001" data-cursor="view" aria-label="View Volt Runner 01">
+              <div class="hero__float">
+                <div class="hero__media media">
+                  <img data-img="voltRunner" data-ratio="1.15" data-sizes="(min-width: 1024px) 40vw, 90vw" alt="Volt Runner 01 sneaker in electric lime with black swoosh" width="900" height="1035" fetchpriority="high">
+                </div>
+              </div>
+            </a>
+            <div class="hero__chip hero__chip--price" aria-hidden="true">
+              <span class="hero__chip-label">Volt Runner 01</span>
+              <strong data-hero-price>₦145,000</strong>
+            </div>
+            <div class="hero__chip hero__chip--rating" aria-hidden="true">
+              <span class="hero__chip-dot"></span> 4.9 · 214 reviews
+            </div>
+          </div>
+
+          <a class="hero__badge" href="shop.html" aria-label="Shop now">
+            <svg class="hero__badge-ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+              <defs><path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text><textPath href="#badge-circle" startOffset="0">SHOP NOW ✦ SHOP NOW ✦ SHOP NOW ✦ </textPath></text>
+            </svg>
+            <span class="hero__badge-core" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Move different</span><span class="marquee__star">✦</span>
+          <span class="marquee__outline">Street ready</span><span class="marquee__star">✦</span>
+          <span>Lagos → World</span><span class="marquee__star">✦</span>
+          <span class="marquee__outline">New drop live</span><span class="marquee__star">✦</span>
+          <span>Free shipping over ₦150K</span><span class="marquee__star">✦</span>
+          <span>Move different</span><span class="marquee__star">✦</span>
+          <span class="marquee__outline">Street ready</span><span class="marquee__star">✦</span>
+          <span>Lagos → World</span><span class="marquee__star">✦</span>
+          <span class="marquee__outline">New drop live</span><span class="marquee__star">✦</span>
+          <span>Free shipping over ₦150K</span><span class="marquee__star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CATEGORIES — clip-path reveal, image zoom, VIEW cursor -->
+    <section class="section categories" aria-labelledby="categories-title">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Shop by category</p>
+            <h2 class="section-title" id="categories-title" data-split="chars">Pick your lane.</h2>
+          </div>
+          <p class="lead" data-reveal="fade-up">Three lanes, one attitude. From hi-tops to heavyweight fleece to the small things that finish a fit.</p>
+        </header>
+
+        <div class="categories__grid">
+          <a class="cat-card" href="shop.html?category=shoes" data-cursor="view" data-reveal="clip">
+            <div class="cat-card__media media">
+              <img data-img="sneakersStreet" data-ratio="1.3" data-sizes="(min-width: 1024px) 33vw, 100vw" alt="Close-up of high-top sneakers worn on a city ledge" width="800" height="1040" loading="lazy">
+            </div>
+            <div class="cat-card__body">
+              <span class="cat-card__index">01</span>
+              <h3 class="cat-card__title">Shoes</h3>
+              <p class="cat-card__meta"><span data-cat-count="shoes">9</span> styles · Runners, courts &amp; hi-tops</p>
+              <span class="cat-card__arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+          <a class="cat-card" href="shop.html?category=clothing" data-cursor="view" data-reveal="clip" style="--delay:120ms">
+            <div class="cat-card__media media">
+              <img data-img="lookOrange" data-ratio="1.3" data-sizes="(min-width: 1024px) 33vw, 100vw" alt="Model in a bright orange oversized sweatshirt and jeans" width="800" height="1040" loading="lazy">
+            </div>
+            <div class="cat-card__body">
+              <span class="cat-card__index">02</span>
+              <h3 class="cat-card__title">Clothing</h3>
+              <p class="cat-card__meta"><span data-cat-count="clothing">9</span> styles · Hoodies, tees, jackets &amp; trousers</p>
+              <span class="cat-card__arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+          <a class="cat-card" href="shop.html?category=accessories" data-cursor="view" data-reveal="clip" style="--delay:240ms">
+            <div class="cat-card__media media">
+              <img data-img="watchField" data-ratio="1.3" data-sizes="(min-width: 1024px) 33vw, 100vw" alt="Hand holding a minimal watch with a brown leather strap" width="800" height="1040" loading="lazy">
+            </div>
+            <div class="cat-card__body">
+              <span class="cat-card__index">03</span>
+              <h3 class="cat-card__title">Accessories</h3>
+              <p class="cat-card__meta"><span data-cat-count="accessories">9</span> styles · Caps, bags, socks, shades &amp; watches</p>
+              <span class="cat-card__arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FEATURED — pinned horizontal scroll -->
+    <section class="featured" aria-labelledby="featured-title" data-featured>
+      <div class="featured__pin" data-featured-pin>
+        <div class="container featured__head">
+          <div>
+            <p class="eyebrow">Featured heat</p>
+            <h2 class="section-title" id="featured-title">This week's<br><span class="text-accent">most wanted.</span></h2>
+          </div>
+          <div class="featured__progress" aria-hidden="true">
+            <span class="featured__counter"><span data-featured-current>01</span> / <span data-featured-total>08</span></span>
+            <span class="featured__track-line"><span class="featured__bar" data-featured-bar></span></span>
+          </div>
+        </div>
+        <div class="featured__viewport" data-featured-viewport>
+          <ul class="featured__track" role="list" data-featured-track>
+            <!-- Rendered by home.js from products.js -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BRAND STATEMENT — words fill with colour as you scroll -->
+    <section class="section statement" aria-label="Brand statement">
+      <div class="container">
+        <p class="eyebrow">The DRIFTLINE manifesto</p>
+        <p class="statement__text" data-word-fill>
+          We don't follow the line. We <em>drift</em> past it. Every pair, every piece, every stitch is built for the city, cut for the culture and made for people who <em>move different.</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. STATS COUNTER -->
+    <section class="stats" aria-label="DRIFTLINE in numbers">
+      <div class="container">
+        <dl class="stats__grid" data-reveal-stagger>
+          <div class="stat">
+            <dt class="stat__label">Happy customers</dt>
+            <dd class="stat__value"><span data-count="250" data-suffix="K+">0</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Countries shipped</dt>
+            <dd class="stat__value"><span data-count="42">0</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Drops released</dt>
+            <dd class="stat__value"><span data-count="64">0</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Average rating</dt>
+            <dd class="stat__value"><span data-count="4.9" data-decimals="1" data-suffix="★">0</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 7. NEW DROP COUNTDOWN — flip digits -->
+    <section class="section drop" aria-labelledby="drop-title">
+      <div class="container drop__inner">
+        <div class="drop__copy">
+          <p class="eyebrow">Next drop</p>
+          <h2 class="section-title" id="drop-title" data-split="words"><span data-drop-name>DRIFT/08 — Afterglow</span></h2>
+          <p class="lead" data-reveal="fade-up">Twelve pieces. One night only. Hyper-limited runners, reflective outerwear and a collab we can't talk about yet. Subscribers get 30-minute early access.</p>
+
+          <div class="countdown" data-countdown role="timer" aria-live="off">
+            <div class="countdown__unit"><div class="countdown__digits" data-unit="days"></div><span class="countdown__label">Days</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><div class="countdown__digits" data-unit="hours"></div><span class="countdown__label">Hours</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><div class="countdown__digits" data-unit="minutes"></div><span class="countdown__label">Mins</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><div class="countdown__digits" data-unit="seconds"></div><span class="countdown__label">Secs</span></div>
+          </div>
+          <p class="visually-hidden" data-countdown-sr aria-live="polite"></p>
+
+          <div class="drop__ctas" data-reveal="fade-up">
+            <a class="btn btn--accent" href="#newsletter" data-magnetic>Get early access</a>
+            <a class="btn btn--ghost" href="shop.html?sort=newest">Shop latest drop</a>
+          </div>
+        </div>
+
+        <div class="drop__visual" data-reveal="scale">
+          <div class="drop__media media">
+            <img data-img="blushRs" data-ratio="1.2" data-sizes="(min-width: 1024px) 40vw, 90vw" alt="Teaser: chunky sneaker in blush and white, partially hidden" width="800" height="960" loading="lazy">
+          </div>
+          <span class="drop__sticker" aria-hidden="true">Sneak<br>peek</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. LOOKBOOK — mask reveal + multi-speed parallax columns -->
+    <section class="section lookbook" id="lookbook" aria-labelledby="lookbook-title">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Lookbook · Winter '26</p>
+            <h2 class="section-title" id="lookbook-title" data-split="chars">Worn on the street.</h2>
+          </div>
+          <a class="btn btn--ghost" href="shop.html" data-reveal="fade-up">Shop the looks</a>
+        </header>
+
+        <div class="lookbook__grid">
+          <div class="lookbook__col" data-parallax data-speed="-0.06">
+            <figure class="look" data-reveal="mask">
+              <div class="look__media media look__media--tall"><img data-img="lookTeal" data-ratio="1.4" data-sizes="(min-width: 768px) 33vw, 50vw" alt="Model in striped wide-leg trousers and crop top against a teal wall" width="700" height="980" loading="lazy"></div>
+              <figcaption class="look__caption"><span>Look 01</span> Stripe Theory</figcaption>
+            </figure>
+            <figure class="look" data-reveal="mask">
+              <div class="look__media media"><img data-img="lookFlatlay" data-ratio="1.1" data-sizes="(min-width: 768px) 33vw, 50vw" alt="Flat lay of chinos, white sneakers and a watch" width="700" height="770" loading="lazy"></div>
+              <figcaption class="look__caption"><span>Look 02</span> Weekend Kit</figcaption>
+            </figure>
+          </div>
+          <div class="lookbook__col lookbook__col--offset" data-parallax data-speed="0.1">
+            <figure class="look" data-reveal="mask">
+              <div class="look__media media"><img data-img="lookYellow" data-ratio="1.25" data-sizes="(min-width: 768px) 33vw, 50vw" alt="Model in a yellow tracksuit on a basketball court" width="700" height="875" loading="lazy"></div>
+              <figcaption class="look__caption"><span>Look 03</span> Court Gold</figcaption>
+            </figure>
+            <figure class="look" data-reveal="mask">
+              <div class="look__media media look__media--tall"><img data-img="lookJacket" data-ratio="1.4" data-sizes="(min-width: 768px) 33vw, 50vw" alt="Man in a tan suede jacket and blue jeans in the sun" width="700" height="980" loading="lazy"></div>
+              <figcaption class="look__caption"><span>Look 04</span> Desert Hour</figcaption>
+            </figure>
+          </div>
+          <div class="lookbook__col" data-parallax data-speed="-0.14">
+            <figure class="look" data-reveal="mask">
+              <div class="look__media media look__media--tall"><img data-img="lookRed" data-ratio="1.4" data-sizes="(min-width: 768px) 33vw, 50vw" alt="Model in sunglasses and a red graphic tee with a black jacket" width="700" height="980" loading="lazy"></div>
+              <figcaption class="look__caption"><span>Look 05</span> Red Alert</figcaption>
+            </figure>
+            <figure class="look" data-reveal="mask">
+              <div class="look__media media"><img data-img="lookBlackTee" data-ratio="1.1" data-sizes="(min-width: 768px) 33vw, 50vw" alt="Smiling man in a black tee and sunglasses leaning on a wall" width="700" height="770" loading="lazy"></div>
+              <figcaption class="look__caption"><span>Look 06</span> All Black Everything</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. TESTIMONIALS — auto-sliding, draggable carousel -->
+    <section class="section testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Reviews</p>
+            <h2 class="section-title" id="testimonials-title" data-split="chars">Heard on the block.</h2>
+          </div>
+          <div class="carousel__controls">
+            <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous review">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            </button>
+            <button class="carousel__btn" type="button" data-carousel-next aria-label="Next review">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="Customer reviews" data-cursor="drag">
+          <ul class="carousel__track" role="list" data-carousel-track>
+            <li class="review" role="group" aria-roledescription="slide">
+              <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <blockquote class="review__quote">“The Volt Runners turned heads from Yaba to Victoria Island. Lightest pair I've ever owned — I've already ordered the black.”</blockquote>
+              <footer class="review__author"><span class="review__avatar" aria-hidden="true">TA</span><span><strong>Tobi A.</strong><span class="review__meta">Lagos · Volt Runner 01</span></span></footer>
+            </li>
+            <li class="review" role="group" aria-roledescription="slide">
+              <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <blockquote class="review__quote">“Heavyweight hoodie actually means heavyweight. Survived a London winter and three hundred washes. Still black.”</blockquote>
+              <footer class="review__author"><span class="review__avatar" aria-hidden="true">KM</span><span><strong>Kemi M.</strong><span class="review__meta">London · Fog Hoodie</span></span></footer>
+            </li>
+            <li class="review" role="group" aria-roledescription="slide">
+              <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <blockquote class="review__quote">“Ordered on Monday, wore them on Wednesday. Packaging alone deserves its own drop. Customer service sorted my size swap in minutes.”</blockquote>
+              <footer class="review__author"><span class="review__avatar" aria-hidden="true">KO</span><span><strong>Kwame O.</strong><span class="review__meta">Accra · Heritage High '85</span></span></footer>
+            </li>
+            <li class="review" role="group" aria-roledescription="slide">
+              <p class="review__stars" aria-label="4 out of 5 stars">★★★★☆</p>
+              <blockquote class="review__quote">“The Saddle pack is aging beautifully. Six months in and the leather has that patina you can't fake. Wish it came in black too.”</blockquote>
+              <footer class="review__author"><span class="review__avatar" aria-hidden="true">ZE</span><span><strong>Zainab E.</strong><span class="review__meta">Abuja · Saddle Leather Pack</span></span></footer>
+            </li>
+            <li class="review" role="group" aria-roledescription="slide">
+              <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <blockquote class="review__quote">“Finally a brand that gets African streetwear without the clichés. Fit is boxy in all the right places.”</blockquote>
+              <footer class="review__author"><span class="review__avatar" aria-hidden="true">DN</span><span><strong>David N.</strong><span class="review__meta">Nairobi · Essential Tee</span></span></footer>
+            </li>
+            <li class="review" role="group" aria-roledescription="slide">
+              <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <blockquote class="review__quote">“Got the Midnight Chrono as a gift to myself. The volt seconds hand is such a flex. Compliments every single day.”</blockquote>
+              <footer class="review__author"><span class="review__avatar" aria-hidden="true">AF</span><span><strong>Amara F.</strong><span class="review__meta">Port Harcourt · Midnight Chrono</span></span></footer>
+            </li>
+          </ul>
+        </div>
+        <div class="carousel__dots" data-carousel-dots role="group" aria-label="Choose review"></div>
+      </div>
+    </section>
+
+    <!-- 10. NEWSLETTER -->
+    <section class="section newsletter" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="container">
+        <div class="newsletter__card" data-reveal="scale">
+          <div class="newsletter__copy">
+            <p class="eyebrow">The Drift List</p>
+            <h2 class="newsletter__title" id="newsletter-title">Get the drop<br>before it <span class="newsletter__highlight">drops.</span></h2>
+            <p class="newsletter__text">Early access, members-only colourways and zero spam. Unsubscribe any time.</p>
+          </div>
+
+          <form class="newsletter__form" data-newsletter novalidate>
+            <div class="field newsletter__field">
+              <label class="visually-hidden" for="nl-email">Email address</label>
+              <input class="newsletter__input" id="nl-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required data-label="Email">
+              <button class="newsletter__btn" type="submit" aria-label="Subscribe">
+                <span class="newsletter__btn-text">Subscribe</span>
+                <span class="newsletter__btn-icon" aria-hidden="true">
+                  <svg class="nb-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <span class="nb-spinner"></span>
+                  <svg class="nb-check" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+                </span>
+              </button>
+              <p class="field__error" id="nl-email-error"></p>
+            </div>
+            <p class="newsletter__success" data-newsletter-success role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

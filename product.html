@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product — DRIFTLINE</title>
+  <meta name="description" content="DRIFTLINE product details: sizes, colours, materials and delivery information.">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="js/theme-init.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="product">
+  <div class="page-transition" aria-hidden="true"><span class="page-transition__word">DRIFTLINE</span></div>
+
+  <main id="main" tabindex="-1">
+    <div class="container pdp" data-product-root aria-busy="true">
+      <!-- Skeleton shown until product.js renders the product from ?id= -->
+      <div class="pdp__grid" aria-hidden="true">
+        <div class="pdp__gallery">
+          <div class="skeleton skeleton--media"></div>
+        </div>
+        <div class="pdp__info">
+          <div class="skeleton skeleton--line skeleton--short"></div>
+          <div class="skeleton skeleton--title"></div>
+          <div class="skeleton skeleton--line"></div>
+          <div class="skeleton skeleton--block"></div>
+          <div class="skeleton skeleton--block"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section related" aria-labelledby="related-title" data-related hidden>
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">You might also like</p>
+            <h2 class="section-title" id="related-title">Complete the fit.</h2>
+          </div>
+          <a class="btn btn--ghost" href="shop.html">Shop all</a>
+        </header>
+        <div class="product-grid related__grid" data-related-grid data-reveal-stagger></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

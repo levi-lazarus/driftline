@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop — DRIFTLINE</title>
+  <meta name="description" content="Shop DRIFTLINE sneakers, hoodies, tees, jackets, trousers, caps, bags, socks, sunglasses and watches.">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="js/theme-init.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="shop">
+  <div class="page-transition" aria-hidden="true"><span class="page-transition__word">DRIFTLINE</span></div>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero page-hero--compact" aria-labelledby="shop-title">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page" data-shop-crumb>Shop</span></li>
+          </ol>
+        </nav>
+        <h1 class="page-hero__title" id="shop-title" data-shop-title>Shop all</h1>
+        <p class="page-hero__lead" data-shop-lead>Every drop, every lane. Filter by what moves you.</p>
+      </div>
+    </section>
+
+    <div class="container shop">
+      <!-- Toolbar: search · filters toggle (mobile) · result count · sort -->
+      <div class="shop__toolbar">
+        <div class="search">
+          <label class="visually-hidden" for="shop-search">Search products</label>
+          <svg class="search__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input class="search__input" id="shop-search" type="search" placeholder="Search sneakers, hoodies, caps…" autocomplete="off" data-search>
+          <button class="search__clear" type="button" data-search-clear aria-label="Clear search" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+
+        <button class="btn btn--ghost shop__filter-toggle" type="button" data-filters-open aria-controls="filters" aria-expanded="false">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          Filters <span class="count-pill" data-filter-count hidden>0</span>
+        </button>
+
+        <p class="shop__count" data-result-count role="status" aria-live="polite">Loading products…</p>
+
+        <div class="sort">
+          <label class="sort__label" for="shop-sort">Sort</label>
+          <select class="select sort__select" id="shop-sort" data-sort>
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="popular">Most popular</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="shop__layout">
+        <!-- Filters: sticky sidebar on desktop, slide-in panel on mobile -->
+        <div class="filters-overlay" data-filters-overlay hidden></div>
+        <aside class="filters" id="filters" aria-labelledby="filters-title" data-filters>
+          <div class="filters__head">
+            <h2 class="filters__title" id="filters-title">Filters</h2>
+            <button class="icon-btn filters__close" type="button" data-filters-close aria-label="Close filters">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+
+          <form class="filters__form" data-filter-form>
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Category</legend>
+              <div class="chip-group" data-filter-category></div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Size</legend>
+              <div class="chip-group chip-group--sizes" data-filter-size></div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Colour</legend>
+              <div class="swatch-group" data-filter-color></div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Price</legend>
+              <div class="price-range" data-price-range>
+                <div class="price-range__track">
+                  <span class="price-range__fill" data-price-fill></span>
+                  <label class="visually-hidden" for="price-min">Minimum price</label>
+                  <input class="price-range__input" id="price-min" type="range" data-price-min>
+                  <label class="visually-hidden" for="price-max">Maximum price</label>
+                  <input class="price-range__input" id="price-max" type="range" data-price-max>
+                </div>
+                <p class="price-range__output"><output data-price-output-min for="price-min">₦0</output> — <output data-price-output-max for="price-max">₦0</output></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Show only</legend>
+              <label class="switch">
+                <input type="checkbox" data-filter-new>
+                <span class="switch__track" aria-hidden="true"></span>
+                New arrivals
+              </label>
+              <label class="switch">
+                <input type="checkbox" data-filter-wishlist>
+                <span class="switch__track" aria-hidden="true"></span>
+                My wishlist
+              </label>
+            </fieldset>
+
+            <div class="filters__actions">
+              <button class="btn btn--ghost" type="button" data-filters-clear>Clear all</button>
+              <button class="btn btn--accent filters__apply" type="button" data-filters-close>Show results</button>
+            </div>
+          </form>
+        </aside>
+
+        <section class="shop__results" aria-label="Products">
+          <div class="active-filters" data-active-filters aria-label="Active filters"></div>
+          <div class="product-grid" data-product-grid></div>
+
+          <div class="shop__empty" data-shop-empty hidden>
+            <p class="shop__empty-emoji" aria-hidden="true">✦</p>
+            <h2 class="shop__empty-title" data-empty-title>Nothing matches… yet.</h2>
+            <p class="shop__empty-text" data-empty-text>Try removing a filter or searching for something else.</p>
+            <button class="btn btn--accent" type="button" data-filters-clear>Reset filters</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

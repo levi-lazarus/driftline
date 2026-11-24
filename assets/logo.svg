@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 40" role="img" aria-label="DRIFTLINE">
+  <rect width="40" height="40" rx="10" fill="#c6ff3d"/>
+  <path d="M11 29 22 11M18 29l11-18" stroke="#0b0b0c" stroke-width="4.5" stroke-linecap="round"/>
+  <text x="52" y="29" font-family="Unbounded, 'Arial Black', sans-serif" font-weight="900" font-size="22" letter-spacing="0.5" fill="#f4f1ea">DRIFTLINE</text>
+</svg>

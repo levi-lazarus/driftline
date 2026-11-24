@@ -1,0 +1,184 @@
+/* ==========================================================================
+   DRIFTLINE — Motion: keyframes, reveal utilities, reduced-motion fallbacks
+   Rule of thumb: animate transform + opacity only (GPU-friendly).
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ---- Keyframes ------------------------------------------------------------ */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes shimmer { to { transform: translateX(100%); } }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes badge-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.6); }
+  100% { transform: scale(1); }
+}
+@keyframes receive {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.25) rotate(-8deg); }
+  70% { transform: scale(0.95) rotate(4deg); }
+  100% { transform: scale(1); }
+}
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.35); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.92); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes toast-out {
+  to { opacity: 0; transform: translateX(40px) scale(0.95); }
+}
+@keyframes timer {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+@keyframes curtain-out {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+@keyframes curtain-in {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes letter-in {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes check-draw {
+  from { stroke-dashoffset: 30; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pop-in {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ---- Scroll reveal utilities ---------------------------------------------- */
+/* Hidden states only apply when JS is running (html.js), so content is never lost. */
+.js [data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 900ms var(--ease-out),
+    transform 1100ms var(--ease-out),
+    clip-path 1200ms var(--ease-in-out);
+  transition-delay: var(--delay, 0ms);
+}
+.js [data-reveal="fade-up"] { transform: translateY(48px); }
+.js [data-reveal="scale"] { transform: scale(0.9); }
+.js [data-reveal="slide-left"] { transform: translateX(60px); }
+.js [data-reveal="slide-right"] { transform: translateX(-60px); }
+
+/* clip: the card wipes open from the bottom */
+.js [data-reveal="clip"] {
+  opacity: 1;
+  clip-path: inset(100% 0 0 0 round var(--radius-lg));
+}
+/* mask: the image wipes down while the photo settles from a zoom */
+.js [data-reveal="mask"] {
+  opacity: 1;
+  clip-path: inset(0 0 100% 0);
+}
+.js [data-reveal="mask"] img { transform: scale(1.35); transition: transform 1600ms var(--ease-out), opacity 700ms ease; }
+
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0 round 0);
+}
+.js [data-reveal="clip"].is-revealed { clip-path: inset(0 0 0 0 round var(--radius-lg)); }
+.js [data-reveal="mask"].is-revealed img { transform: scale(1); }
+
+/* Stagger: direct children reveal in sequence */
+.js [data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 800ms var(--ease-out), transform 1000ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js [data-reveal-stagger].is-revealed > * { opacity: 1; transform: none; }
+
+/* ---- Split text ----------------------------------------------------------- */
+.split-word { display: inline-block; white-space: nowrap; }
+.split-char {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.split-char__inner,
+.split-word__inner { display: inline-block; }
+
+[data-split="words"] .split-word { overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+
+.js [data-split] .split-char__inner,
+.js [data-split] .split-word__inner {
+  transform: translateY(110%);
+  transition: transform 1000ms var(--ease-out);
+}
+.js [data-split] .split-char__inner { transition-delay: calc(var(--delay, 0ms) + var(--i) * 28ms); }
+.js [data-split] .split-word__inner { transition-delay: calc(var(--delay, 0ms) + var(--i) * 55ms); }
+.js [data-split].is-revealed .split-char__inner,
+.js [data-split].is-revealed .split-word__inner { transform: none; }
+
+/* ---- Fallback when the JS modules failed to load --------------------------- */
+.no-module .preloader,
+.no-module .page-transition { display: none; }
+
+/* ---- Reduced motion -------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js [data-reveal],
+  .js [data-reveal-stagger] > *,
+  .js [data-split] .split-char__inner,
+  .js [data-split] .split-word__inner,
+  .js [data-reveal="mask"] img {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .page-transition { display: none; }
+  .marquee__track,
+  .hero__badge-ring { animation: none !important; }
+}
