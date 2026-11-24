@@ -184,7 +184,7 @@ function footerTemplate() {
     </a>
 
     <div class="container site-footer__bottom">
-      <p>© ${year} ${CONFIG.brand.name}. A portfolio concept — no real orders are processed.</p>
+      <p>© ${year} ${CONFIG.brand.name}. All rights reserved.</p>
       <button class="back-to-top" type="button" data-back-to-top>
         Back to top <span class="back-to-top__icon">${ICONS.arrowUp}</span>
       </button>
