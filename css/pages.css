@@ -498,6 +498,78 @@ html:not(.skip-preloader) [data-page="home"] .page-transition:not(.is-leaving) {
 }
 .statement__text .split-word__inner.is-lit { opacity: 1; }
 
+/* 3D Volt Runner (js/shoe3d.js): spins one full turn across the section.
+   Phones/tablets: a compact stage above the copy. Desktop: a sticky rail
+   beside the copy, so the shoe travels down the page as it rotates. */
+.statement__inner { display: grid; gap: 0.5rem; }
+.spin { order: -1; }
+.spin__stage {
+  position: relative;
+  height: clamp(220px, 62vw, 360px);
+  margin-inline: calc(var(--gutter) * -0.5);
+}
+.spin__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 900ms ease, transform 1200ms var(--ease-out);
+}
+.spin__stage.is-ready .spin__canvas { opacity: 1; transform: none; }
+.spin__glow {
+  position: absolute;
+  inset: 18% 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(198 255 61 / 0.32), transparent 68%);
+  filter: blur(30px);
+  animation: float 8s ease-in-out infinite;
+}
+.spin__shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  width: 52%;
+  height: 8%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 38%, transparent), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.spin__tag {
+  position: absolute;
+  top: 0.5rem;
+  left: calc(var(--gutter) * 0.5);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-soft);
+  opacity: 0;
+  transition: opacity 600ms 400ms ease;
+}
+.spin__tag b { color: var(--accent-text); }
+.spin__stage.is-ready .spin__tag { opacity: 1; }
+.spin:has(.is-failed),
+html:not(.js) .spin { display: none; }
+
+@media (min-width: 1024px) {
+  .statement__inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 3rem; align-items: stretch; }
+  .spin { order: 0; }
+  .spin__stage {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+    height: min(62svh, 540px);
+    margin-inline: 0;
+  }
+  .spin__tag { left: 0; }
+  .statement__text { font-size: clamp(1.7rem, 0.9rem + 2.8vw, 3.9rem); }
+}
+
 /* ---- A7. Stats ------------------------------------------------------------ */
 .stats { padding-bottom: var(--section-y); }
 .stats__grid {
@@ -653,7 +725,9 @@ html:not(.skip-preloader) [data-page="home"] .page-transition:not(.is-leaving) {
   .lookbook__col { display: flex; flex-direction: column; gap: clamp(1rem, 2vw, 2rem); will-change: transform; }
   .lookbook__col--offset { margin-top: clamp(3rem, 8vw, 8rem); }
 }
-.look { display: grid; gap: 0.75rem; }
+.look { display: grid; gap: 0.75rem; align-content: start; }
+/* The staggered columns already leave air at the bottom; don't double it. */
+.lookbook { padding-bottom: calc(var(--section-y) * 0.5); }
 .look__media { aspect-ratio: 10 / 11; border-radius: var(--radius); }
 .look__media--tall { aspect-ratio: 5 / 7; }
 .look__media img { transition: transform 1600ms var(--ease-out), opacity 700ms ease; }
@@ -1801,3 +1875,51 @@ body:has(.site-header:not(.is-hidden)) .shop__toolbar { top: var(--header-h); }
 .faq__grid { display: grid; gap: 2.5rem; }
 @media (min-width: 1024px) { .faq__grid { grid-template-columns: 1fr 1.5fr; gap: 5rem; } }
 .faq__lead { margin-top: 1rem; }
+
+/* ==========================================================================
+   Mobile spacing pass — trims fixed gaps that stack up on small screens.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .section-head { margin-bottom: 1.5rem; }
+  .cat-card { aspect-ratio: 1 / 1; }
+
+  /* Categories: sticky card stack. Each card pins below the header and the
+     next one slides over it; home.js shrinks/dims the covered card using the
+     individual `scale` property, so it never fights the reveal's `transform`. */
+  .categories__grid { gap: 1.25rem; }
+  .cat-card {
+    position: sticky;
+    top: calc(var(--header-h) + 0.75rem + var(--stack-i, 0) * 12px);
+    box-shadow: 0 -18px 40px -12px rgb(0 0 0 / 0.55);
+    transform-origin: 50% 0;
+  }
+  .cat-card:nth-child(2) { --stack-i: 1; }
+  .cat-card:nth-child(3) { --stack-i: 2; }
+
+  /* Lookbook: break the grid — right column sits lower (home.js adds drift). */
+  .lookbook__grid { gap: 1rem 0.85rem; padding-bottom: 3rem; }
+  .lookbook__col .look:nth-child(2) { translate: 0 var(--look-shift, 3rem); }
+  .look__caption { flex-wrap: wrap; gap: 0.1rem 0.6rem; }
+  .look__caption span { white-space: nowrap; }
+
+  /* Drop: a tilted "polaroid" that straightens as it scrolls in. */
+  .drop__visual {
+    width: 84%;
+    justify-self: end;
+    margin-right: -0.25rem;
+    rotate: var(--drop-tilt, -5deg);
+  }
+  .drop__media { box-shadow: 0 24px 50px -18px rgb(0 0 0 / 0.7); }
+  .hero { min-height: auto; padding-top: calc(var(--header-h) + 1rem); }
+  .hero__inner { gap: 1.75rem; padding-bottom: 1.5rem; }
+  .hero__title { margin-block: 0.75rem 1rem; }
+  .hero__visual { width: min(100%, 400px); }
+  .drop__inner { gap: 2rem; }
+  .countdown { margin-top: 1.5rem; }
+  .drop__ctas { margin-top: 1.5rem; }
+  .drop__visual { max-width: 380px; }
+  .statement__text { margin-top: 1rem; }
+  .carousel__dots { margin-top: 1.25rem; }
+  .newsletter__card { gap: 1.5rem; }
+  .site-footer__top { gap: 1.75rem; }
+}

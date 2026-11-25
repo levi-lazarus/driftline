@@ -17,7 +17,7 @@ DRIFTLINE is a fictional Lagos-born label selling sneakers, clothing and accesso
 | 2 | **Hero** | Per-letter staggered headline; floating product card with mouse parallax and 3D tilt (rAF + lerp); "different." inverts over the photo via `mix-blend-mode: difference`; rotating SVG `textPath` "Shop now" badge; infinite marquee. |
 | 3 | **Categories** | Cards wipe open with a `clip-path` reveal; image zoom on hover; the custom cursor turns into a **VIEW** label. |
 | 4 | **Featured** | Pinned horizontal scroll: the section sticks while cards slide sideways as you scroll down. Includes a live counter and progress bar. On small screens and with reduced motion it falls back to native swipe with scroll-snap. |
-| 5 | **Brand statement** | Words fill with colour one by one, driven by scroll position. |
+| 5 | **Brand statement** | Words fill with colour one by one, driven by scroll position. Beside them, a **3D Volt Runner** spins a full turn and drifts down as you scroll. It's drawn by a hand-written WebGL2 renderer (`js/shoe3d.js`: GLB parser, PBR-style shader, normal mapping without stored tangents) and is lazy-loaded when the section is near. It shows a static pose with reduced motion and hides itself if WebGL2 is unavailable. |
 | 6 | **Stats** | Count-up (easeOutExpo) the first time the stats scroll into view. |
 | 7 | **New-drop countdown** | Flip-clock digits with a real 3D leaf rotation (`rotateX` + `backface-visibility`). The target date rolls forward automatically so the timer never sits at zero. |
 | 8 | **Lookbook** | Mask reveal with image settle; three columns move at different parallax speeds. |
@@ -52,6 +52,7 @@ DRIFTLINE is a fictional Lagos-born label selling sneakers, clothing and accesso
 - **JavaScript (ES2022 modules):** `IntersectionObserver`, `MutationObserver`, `ResizeObserver`, `requestAnimationFrame`, Web Animations API, Pointer Events, Canvas 2D, `Intl.NumberFormat`, `localStorage`/`sessionStorage`, `history.replaceState`, dynamic `import()`.
 - **Fonts:** [Unbounded](https://fonts.google.com/specimen/Unbounded) (display) and [Inter](https://fonts.google.com/specimen/Inter) (body) via Google Fonts.
 - **Images:** [Unsplash](https://unsplash.com), served from its CDN with responsive `srcset`.
+- **3D model:** `assets/models/volt-runner.glb` (1.25 MB), adapted from Khronos' glTF sample shoe (see Credits).
 
 No libraries, no bundler, no dependencies.
 
@@ -172,3 +173,5 @@ driftline/
 
 ## 📸 Credits
 Photography from [Unsplash](https://unsplash.com) under the Unsplash License. Some product photos show third-party brand logos and are used only as placeholders for this non-commercial concept. Swap them in `js/products.js` before any commercial use.
+
+3D sneaker: ["MaterialsVariantsShoe"](https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/MaterialsVariantsShoe) © 2020 Shopify Inc., licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Modified: a single colourway kept and recoloured to DRIFTLINE lime, textures resized from 2048px to 1024px.

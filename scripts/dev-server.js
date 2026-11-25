@@ -28,6 +28,7 @@ const MIME = {
   '.ico': 'image/x-icon',
   '.woff2': 'font/woff2',
   '.md': 'text/markdown; charset=utf-8',
+  '.glb': 'model/gltf-binary',
 };
 
 async function handler(req, res) {

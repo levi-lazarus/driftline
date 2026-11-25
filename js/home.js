@@ -1,7 +1,7 @@
 /**
  * DRIFTLINE — Home page
  * preloader · hero (split title, mouse parallax + tilt) · category counts ·
- * pinned horizontal featured scroll · scroll word-fill statement · stats
+ * pinned horizontal featured scroll · scroll word-fill statement · 3D shoe · stats
  * count-up · flip countdown · draggable testimonial carousel · newsletter
  */
 import { CONFIG } from './config.js';
@@ -19,6 +19,8 @@ export async function init() {
   initCategoryCounts();
   initFeatured();
   initStatement();
+  initSpin();
+  initMobileFeel();
   initStats();
   initCountdown();
   initCarousel();
@@ -234,6 +236,93 @@ function initStatement() {
     words.forEach((w, i) => w.classList.toggle('is-lit', i < next));
     lit = next;
   });
+}
+
+/* ==========================================================================
+   5b. 3D Volt Runner — renderer + model load only when the section is near
+   ========================================================================== */
+function initSpin() {
+  const stage = $('[data-spin]');
+  const zone = $('[data-spin-zone]');
+  if (!stage || !zone) return;
+
+  const io = new IntersectionObserver(
+    async ([entry]) => {
+      if (!entry.isIntersecting) return;
+      io.disconnect();
+      try {
+        const { initShoe3D } = await import('./shoe3d.js');
+        await initShoe3D(stage, zone);
+      } catch (err) {
+        stage.classList.add('is-failed'); // hide the stage rather than leave a gap
+        console.warn('[driftline] 3D shoe unavailable:', err);
+      }
+    },
+    { rootMargin: '100% 0px' }
+  );
+  io.observe(stage);
+}
+
+/* ==========================================================================
+   5c. Mobile scroll feel — stacked category cards, drifting lookbook column,
+       drop photo that straightens. Uses the individual `scale` / `translate` /
+       `rotate` properties so it never clashes with reveal `transform`s.
+   ========================================================================== */
+function initMobileFeel() {
+  const cards = $$('.cat-card');
+  const lookGrid = $('.lookbook__grid');
+  const rightLooks = $$('.lookbook__col .look:nth-child(2)');
+  const drop = $('.drop__visual');
+  const phone = window.matchMedia('(max-width: 767px)');
+  let active = false;
+
+  const reset = () => {
+    cards.forEach((c) => {
+      c.style.scale = '';
+      c.style.filter = '';
+    });
+    rightLooks.forEach((l) => l.style.setProperty('--look-shift', ''));
+    if (drop) drop.style.setProperty('--drop-tilt', '');
+  };
+
+  const update = () => {
+    if (!active) return;
+    const vh = window.innerHeight;
+
+    // 1. Card stack: the covered card shrinks and dims as the next slides over.
+    cards.forEach((card, i) => {
+      const next = cards[i + 1];
+      if (!next) return;
+      const top = card.getBoundingClientRect().top; // scale origin is top, so this is stable
+      const h = card.offsetHeight;
+      const p = clamp((top + h - next.getBoundingClientRect().top) / h);
+      card.style.scale = (1 - p * 0.08).toFixed(4);
+      card.style.filter = p > 0.001 ? `brightness(${(1 - p * 0.5).toFixed(3)})` : '';
+    });
+
+    // 2. Lookbook: right column starts low and rises past the left one.
+    if (lookGrid) {
+      const r = lookGrid.getBoundingClientRect();
+      const t = clamp((vh - r.top) / (r.height + vh));
+      const shift = `${(56 - t * 64).toFixed(1)}px`;
+      rightLooks.forEach((l) => l.style.setProperty('--look-shift', shift));
+    }
+
+    // 3. Drop photo: tilted on entry, nearly straight by mid-screen.
+    if (drop) {
+      const t = clamp((vh - drop.getBoundingClientRect().top) / (vh * 0.75));
+      drop.style.setProperty('--drop-tilt', `${(-7 + t * 5.5).toFixed(2)}deg`);
+    }
+  };
+
+  const sync = () => {
+    active = phone.matches && !prefersReducedMotion();
+    if (active) update();
+    else reset();
+  };
+  phone.addEventListener('change', sync);
+  onScroll(update);
+  sync();
 }
 
 /* ==========================================================================

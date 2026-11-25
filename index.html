@@ -180,12 +180,23 @@
     </section>
 
     <!-- 5. BRAND STATEMENT — words fill with colour as you scroll -->
-    <section class="section statement" aria-label="Brand statement">
-      <div class="container">
-        <p class="eyebrow">The DRIFTLINE manifesto</p>
-        <p class="statement__text" data-word-fill>
-          We don't follow the line. We <em>drift</em> past it. Every pair, every piece, every stitch is built for the city, cut for the culture and made for people who <em>move different.</em>
-        </p>
+    <!--    + 3D Volt Runner that spins a full turn and drifts down as you scroll -->
+    <section class="section statement" aria-label="Brand statement" data-spin-zone>
+      <div class="container statement__inner">
+        <div class="statement__copy">
+          <p class="eyebrow">The DRIFTLINE manifesto</p>
+          <p class="statement__text" data-word-fill>
+            We don't follow the line. We <em>drift</em> past it. Every pair, every piece, every stitch is built for the city, cut for the culture and made for people who <em>move different.</em>
+          </p>
+        </div>
+        <div class="spin" aria-hidden="true">
+          <div class="spin__stage" data-spin>
+            <div class="spin__glow"></div>
+            <canvas class="spin__canvas"></canvas>
+            <span class="spin__shadow" data-spin-shadow></span>
+            <span class="spin__tag">Volt Runner 01 <b>360°</b></span>
+          </div>
+        </div>
       </div>
     </section>
 

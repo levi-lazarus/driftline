@@ -25,12 +25,50 @@ function prepareStagger(container) {
   [...container.children].forEach((child, i) => child.style.setProperty('--i', i));
 }
 
+/*
+ * "clip" and "mask" reveals start fully clipped (clip-path: inset(...100%...)).
+ * Chrome applies an element's own clip-path when computing its intersection,
+ * so a fully clipped element never "intersects" and would stay hidden forever.
+ * Those elements are checked geometrically on scroll instead, with the same
+ * rule as the observer: reveal once 12% is visible above the bottom 6%.
+ */
+const CLIPPED_REVEALS = new Set(['clip', 'mask']);
+const pendingClipped = new Set();
+let clipWatcherBound = false;
+
+function checkClipped() {
+  if (!pendingClipped.size) return;
+  const vh = window.innerHeight;
+  const bottom = vh * 0.94;
+  pendingClipped.forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (!r.width && !r.height) return; // not rendered (display: none)
+    const visible = Math.min(r.bottom, bottom) - Math.max(r.top, 0);
+    if (visible >= Math.min(r.height, vh) * 0.12) {
+      el.classList.add('is-revealed');
+      pendingClipped.delete(el);
+    }
+  });
+}
+
+function watchClipped(el) {
+  pendingClipped.add(el);
+  if (!clipWatcherBound) {
+    clipWatcherBound = true;
+    onScroll(checkClipped);
+    onResize(checkClipped);
+    window.addEventListener('load', checkClipped);
+  }
+  requestAnimationFrame(checkClipped);
+}
+
 function observeReveal(el) {
   if (el.dataset.revealBound) return;
   el.dataset.revealBound = 'true';
   if (el.hasAttribute('data-reveal-stagger')) prepareStagger(el);
   if (el.hasAttribute('data-split')) splitText(el, el.dataset.split);
-  revealObserver.observe(el);
+  if (CLIPPED_REVEALS.has(el.dataset.reveal)) watchClipped(el);
+  else revealObserver.observe(el);
 }
 
 export function initReveal(root = document) {
