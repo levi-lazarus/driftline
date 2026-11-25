@@ -1910,10 +1910,41 @@ body:has(.site-header:not(.is-hidden)) .shop__toolbar { top: var(--header-h); }
     rotate: var(--drop-tilt, -5deg);
   }
   .drop__media { box-shadow: 0 24px 50px -18px rgb(0 0 0 / 0.7); }
+
+  /* Hero: a tilted, off-centre card the chips and badge overlap like a collage.
+     home.js rotates it further and lifts it as you scroll away. */
+  .hero__visual {
+    width: 82%;
+    justify-self: end;
+    margin-right: 0.25rem;
+    rotate: var(--hero-tilt, 3deg);
+    translate: 0 var(--hero-lift, 0px);
+  }
+  .hero__chip--price { left: -14%; top: 10%; }
+  .hero__chip--rating { right: 3%; bottom: 7%; }
+  .hero__badge { left: -16%; bottom: -4%; }
+
+  /* Stats: zig-zag rows instead of a boxed 2x2 grid; rows slide in from
+     alternating sides (home.js). */
+  .stats { overflow-x: clip; } /* rows wait off-screen before sliding in */
+  .stats__grid { grid-template-columns: 1fr; gap: 0; }
+  .stat {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    translate: var(--stat-x, 0px) 0;
+  }
+  .stat:nth-child(even) { flex-direction: row; }
+  .stat:nth-child(even) .stat__label { text-align: left; }
+  .stat__value { font-size: clamp(2.6rem, 1.4rem + 7vw, 3.4rem); }
+  .stat__label { max-width: 11ch; text-align: right; line-height: 1.35; font-size: var(--fs-xs); }
   .hero { min-height: auto; padding-top: calc(var(--header-h) + 1rem); }
   .hero__inner { gap: 1.75rem; padding-bottom: 1.5rem; }
   .hero__title { margin-block: 0.75rem 1rem; }
-  .hero__visual { width: min(100%, 400px); }
   .drop__inner { gap: 2rem; }
   .countdown { margin-top: 1.5rem; }
   .drop__ctas { margin-top: 1.5rem; }

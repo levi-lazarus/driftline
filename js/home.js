@@ -273,10 +273,17 @@ function initMobileFeel() {
   const lookGrid = $('.lookbook__grid');
   const rightLooks = $$('.lookbook__col .look:nth-child(2)');
   const drop = $('.drop__visual');
+  const heroVisual = $('.hero__visual');
+  const stats = $$('.stat');
   const phone = window.matchMedia('(max-width: 767px)');
   let active = false;
 
   const reset = () => {
+    if (heroVisual) {
+      heroVisual.style.setProperty('--hero-tilt', '');
+      heroVisual.style.setProperty('--hero-lift', '');
+    }
+    stats.forEach((s) => s.style.setProperty('--stat-x', ''));
     cards.forEach((c) => {
       c.style.scale = '';
       c.style.filter = '';
@@ -288,6 +295,20 @@ function initMobileFeel() {
   const update = () => {
     if (!active) return;
     const vh = window.innerHeight;
+
+    // 0. Hero card: leans the other way and lifts as you scroll away from it.
+    if (heroVisual) {
+      const t = clamp(window.scrollY / (vh * 0.9));
+      heroVisual.style.setProperty('--hero-tilt', `${(3 - t * 7).toFixed(2)}deg`);
+      heroVisual.style.setProperty('--hero-lift', `${(-t * 60).toFixed(1)}px`);
+    }
+
+    // 0b. Stats: rows glide in from alternating sides as they enter.
+    stats.forEach((s, i) => {
+      const t = clamp((vh - s.getBoundingClientRect().top) / (vh * 0.4));
+      const dir = i % 2 ? 1 : -1;
+      s.style.setProperty('--stat-x', `${((1 - t) * 56 * dir).toFixed(1)}px`);
+    });
 
     // 1. Card stack: the covered card shrinks and dims as the next slides over.
     cards.forEach((card, i) => {
